@@ -6,8 +6,11 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+
 
 import mx.com.alegutim.practica2.fragment.FragmentList;
+
 
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_ADD_ACTIVITY =1;
@@ -16,9 +19,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getFragmentManager().beginTransaction().replace(R.id.fragmentHolder, new FragmentList()).commit();
         Toolbar toolbar = (Toolbar) findViewById(R.id.tbSave);
         setSupportActionBar(toolbar);
+        //
+        findViewById(R.id.main_btn_update).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction().replace(R.id.fragmentHolder,new FragmentList() ).commit();
+            }
+        });
+
+
+
     }
 
     @Override
@@ -45,9 +57,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (REQUEST_CODE_ADD_ACTIVITY==requestCode && requestCode==RESULT_OK){
-            getFragmentManager().beginTransaction().replace(R.id.fragmentHolder, new FragmentList()).commit();
+            //getFragmentManager().beginTransaction().replace(R.id.fragmentHolder, new FragmentList()).commit();
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
+
+
 }

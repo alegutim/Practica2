@@ -27,7 +27,7 @@ public class AppDataSource {
         contentValues.put(MySqliteHelper.COLUMN_APP_TITTLE,modelApp.appTittle);
         contentValues.put(MySqliteHelper.COLUMN_APP_DEVELOPER,modelApp.appDeveloper);
         contentValues.put(MySqliteHelper.COLUMN_APP_DETAIL,modelApp.appDetail);
-        contentValues.put(MySqliteHelper.COLUMN_APP_UPDATE,modelApp.appUpdated);
+        contentValues.put(MySqliteHelper.COLUMN_APP_UPDATE,(modelApp.appUpdated==true?1:0));
         contentValues.put(MySqliteHelper.COLUMN_APP_IMAGE,modelApp.image_id);
         db.insert(MySqliteHelper.TABLE_NAME_APP,null,contentValues);
     }
@@ -39,7 +39,7 @@ public class AppDataSource {
 
 
     public List<itemApp> getAllItems(){
-        List<itemApp> modelItemList = new ArrayList<>();
+        List<itemApp> modelAppList = new ArrayList<>();
         Cursor cursor = db.query(MySqliteHelper.TABLE_NAME_APP,null,null,null,null,null,null);
         while (cursor.moveToNext()){
             int id = cursor.getInt(cursor.getColumnIndexOrThrow(MySqliteHelper.COLUMN_ID_APP));
@@ -49,14 +49,15 @@ public class AppDataSource {
             String appUpdated = cursor.getString(cursor.getColumnIndexOrThrow(MySqliteHelper.COLUMN_APP_UPDATE));
             String appImage = cursor.getString(cursor.getColumnIndexOrThrow(MySqliteHelper.COLUMN_APP_IMAGE));
             itemApp modelApp = new itemApp();
+            modelApp.id=id;
             modelApp.appTittle=appTittle;
             modelApp.appDeveloper=appDeveloper;
             modelApp.appDetail=appDetail;
             modelApp.appUpdated=(Integer.parseInt(appUpdated)==1?true:false);
             modelApp.image_id=Integer.parseInt(appImage);
-            modelItemList.add(modelApp);
+            modelAppList.add(modelApp);
         }
-        return modelItemList;
+        return modelAppList;
     }
 
 }

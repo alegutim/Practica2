@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:id="@+id/menu_main_add"
-        android:icon="@android:drawable/ic_menu_add"
+        android:icon="@drawable/ic_content_add_circle_outline"
         app:showAsAction="always"
         android:title="Add App"/>
     <item android:id="@+id/menu_main_delete_all"
-        android:icon="@android:drawable/ic_delete"
+        android:icon="@drawable/ic_navigation_cancel"
         app:showAsAction="never"
         android:title="Delete all Apps"/>
 </menu>

@@ -19,8 +19,11 @@ import mx.com.alegutim.practica2.model.itemApp;
  * Created by Administrator on 04/07/2016.
  */
 public class AdapterAppList extends ArrayAdapter<itemApp> {
-    private final String url_1 = "https://mir-s3-cdn-cf.behance.net/projects/202/12792733.54832468a07db.jpg";
-    private final String url_2 = "http://laeconomia.com.mx/wp-content/uploads/pase-urbano.png";
+    private final String url_1 = "http://parentesis.com/imagesPosts/uber-head.jpg";
+    private final String url_2 = "https://s3.amazonaws.com/urgeio-versus/whatsapp/front/front-1393846082939.flat.jpg";
+    private final String url_3 = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Facebook_icon.svg/2000px-Facebook_icon.svg.png";
+    private final String url_4 = "https://lh3.googleusercontent.com/MOf9Kxxkj7GvyZlTZOnUzuYv0JAweEhlxJX6gslQvbvlhLK5_bSTK6duxY2xfbBsj43H=w300";
+    private final String url_5 = "http://puntodestino.com.mx/wp-content/uploads/2016/05/TuTag.jpg";
 
 
     public AdapterAppList(Context context, List<itemApp> objects) {
@@ -37,10 +40,28 @@ public class AdapterAppList extends ArrayAdapter<itemApp> {
         TextView row_txtstatus = (TextView) convertView.findViewById(R.id.row_txtstatus);
         ImageView row_image = (ImageView) convertView.findViewById(R.id.row_image);
         itemApp modelApp = getItem(position);
-        Picasso.with(getContext()).load(modelApp.image_id==0?url_1:url_2).into(row_image);
+        String id_image = "";
+        switch (modelApp.image_id){
+            case 1:
+                id_image=url_1;
+                break;
+            case 2:
+                id_image=url_2;
+                break;
+            case 3:
+                id_image=url_3;
+                break;
+            case 4:
+                id_image=url_4;
+                break;
+            case 5:
+                id_image=url_5;
+                break;
+        }
+        //Picasso.with(getContext()).load(id_image).into(row_image);
         row_txttitle.setText(modelApp.appTittle);
         row_txtdeveloper.setText(modelApp.appDeveloper);
-        row_txtstatus.setText((String.valueOf(modelApp.appUpdated)));
+        row_txtstatus.setText((modelApp.appUpdated?"Installed":"Update"));
 
 
         return convertView;
