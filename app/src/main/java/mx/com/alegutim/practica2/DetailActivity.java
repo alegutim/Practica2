@@ -136,8 +136,14 @@ public class DetailActivity extends AppCompatActivity {
                 finish();
                 return true;
             case R.id.menu_detail_edit:
-                startActivityForResult(new Intent(getApplicationContext(),EditActivity.class)
-                        ,REQUEST_CODE_EDIT_ACTIVITY);
+                Intent i = new Intent(getApplicationContext(),EditActivity.class);
+                i.putExtra("ID",modelApp.id);
+                i.putExtra("TITTLE",modelApp.appTittle);
+                i.putExtra("DEVELOPER",modelApp.appDeveloper);
+                i.putExtra("DETAIL",modelApp.appDetail);
+                i.putExtra("IMAGE",modelApp.image_id);
+                i.putExtra("UPDATE",modelApp.appUpdated);
+                startActivityForResult(i,REQUEST_CODE_EDIT_ACTIVITY);
                 return true;
         }
         return super.onOptionsItemSelected(item);
