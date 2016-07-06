@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
+
 
     <include layout="@layout/toolbar"/>
 
@@ -10,11 +11,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <Button
-        android:id="@+id/main_btn_update"
-        android:text="Update list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
     <FrameLayout
         android:id="@+id/fragmentHolder"

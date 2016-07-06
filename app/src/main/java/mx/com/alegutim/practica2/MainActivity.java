@@ -21,13 +21,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.tbSave);
         setSupportActionBar(toolbar);
-        //
-        findViewById(R.id.main_btn_update).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+
                 getFragmentManager().beginTransaction().replace(R.id.fragmentHolder,new FragmentList() ).commit();
-            }
-        });
+
 
 
 
@@ -56,8 +52,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (REQUEST_CODE_ADD_ACTIVITY==requestCode && requestCode==RESULT_OK){
-            //getFragmentManager().beginTransaction().replace(R.id.fragmentHolder, new FragmentList()).commit();
+        if (REQUEST_CODE_ADD_ACTIVITY==requestCode && resultCode==RESULT_OK){
+            getFragmentManager().beginTransaction().replace(R.id.fragmentHolder, new FragmentList()).commit();
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
