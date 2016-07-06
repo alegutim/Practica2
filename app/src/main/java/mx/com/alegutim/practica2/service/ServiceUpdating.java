@@ -22,7 +22,7 @@ import mx.com.alegutim.practica2.R;
 public class ServiceUpdating extends Service {
     private MyAsyncTask myAsyncTask;
     private int id;
-    protected Resources res = getResources();
+    protected Resources res;
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
@@ -33,6 +33,7 @@ public class ServiceUpdating extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+        res = getResources();
 
     }
 

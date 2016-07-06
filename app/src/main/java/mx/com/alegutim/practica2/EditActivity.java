@@ -1,12 +1,14 @@
 package mx.com.alegutim.practica2;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 
 import mx.com.alegutim.practica2.model.itemApp;
@@ -20,11 +22,13 @@ public class EditActivity extends AppCompatActivity {
     private EditText edit_developer;
     private EditText edit_detail;
     private CheckBox edit_check;
+    private Resources res;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
+        res = getResources();
         appDataSource= new AppDataSource(getApplicationContext());
         edit_tittle = (EditText)findViewById(R.id.edit_tittle);
         edit_developer = (EditText)findViewById(R.id.edit_developer);
@@ -48,7 +52,16 @@ public class EditActivity extends AppCompatActivity {
             edit_check.setText(getResources().getString(R.string.additem_checked_notok));
             edit_check.setChecked(false);
         }
-
+        edit_check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(edit_check.isChecked()){
+                    edit_check.setText(res.getString(R.string.additem_checked_ok));
+                } else{
+                    edit_check.setText(res.getString(R.string.additem_checked_notok));
+                }
+            }
+        });
         findViewById(R.id.edit_btn_save).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

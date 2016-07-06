@@ -55,10 +55,7 @@ public class DetailActivity extends AppCompatActivity {
                 detail_btn_update.setEnabled(false);
                 modelApp.appUpdated=true;
                 appDataSource.saveChangeUpdate(modelApp);
-                Intent i = new Intent();
 
-                setResult(RESULT_OK,new Intent());
-                finish();
             }
         });
 
@@ -173,6 +170,7 @@ public class DetailActivity extends AppCompatActivity {
             detail_btn_update.setEnabled(false);
         } else{
             detail_btn_update.setText(getResources().getString(R.string.additem_checked_notok));
+            detail_btn_update.setEnabled(true);
         }
     }
 
