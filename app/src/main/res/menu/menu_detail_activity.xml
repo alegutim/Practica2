@@ -4,5 +4,5 @@
     <item android:id="@+id/menu_detail_edit"
         android:icon="@drawable/ic_action_receipt"
         app:showAsAction="always"
-        android:title="Add App"/>
+        android:title="@string/menu_detail_add"/>
 </menu>

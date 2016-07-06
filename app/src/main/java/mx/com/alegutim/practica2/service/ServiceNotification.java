@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.IBinder;
@@ -21,6 +22,7 @@ import mx.com.alegutim.practica2.R;
 public class ServiceNotification extends Service {
     private MyAsyncTask myAsyncTask;
     private int id;
+    protected Resources res = getResources();
 
 
     @Nullable
@@ -57,8 +59,8 @@ public class ServiceNotification extends Service {
 
             mNotif = new NotificationCompat
                     .Builder(getApplicationContext())
-                    .setContentTitle("Uninstalling")
-                    .setContentText("Uninstalling APP")
+                    .setContentTitle(res.getString(R.string.serviceNotification_title))
+                    .setContentText(res.getString(R.string.serviceNotification_text))
                     .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_navigation_more_vert))
                     .setSmallIcon(android.R.drawable.ic_dialog_email);
         }
@@ -91,9 +93,9 @@ public class ServiceNotification extends Service {
             if (result) {
                 // eliminar progreso
                 mNotif.setProgress(0, 0, false);
-                mNotif.setContentTitle("Uninstall completed");
-                mNotif.setContentText("The App is full uninstalled");
-                mNotif.setContentInfo("Uninstall");
+                mNotif.setContentTitle(res.getString(R.string.serviceNotification_tittle_final));
+                mNotif.setContentText(res.getString(R.string.serviceNotification_text_final));
+                mNotif.setContentInfo(res.getString(R.string.serviceNotification_inf_final));
                 mNotif.setAutoCancel(true);
                 PendingIntent pendingIntent = PendingIntent
                         .getActivity(getApplicationContext(), 0, new Intent(getApplicationContext(), MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);

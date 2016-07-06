@@ -36,11 +36,25 @@ public class AppDataSource {
         db.delete(MySqliteHelper.TABLE_NAME_APP,MySqliteHelper.COLUMN_ID_APP + " =? ", new String[]{String.valueOf(modelApp.id)});
     }
 
-    public  void saveUtlConexion (itemApp modelApp){
+    public  void saveChangeUpdate (itemApp modelApp){
         ContentValues contentValues = new ContentValues();
         contentValues.put(MySqliteHelper.COLUMN_APP_UPDATE,modelApp.appUpdated==true?1:0);
         db.update(MySqliteHelper.TABLE_NAME_APP,contentValues,MySqliteHelper.COLUMN_ID_APP + " =? ", new String[]{String.valueOf(modelApp.id)});
     }
+
+    public  void saveEditApp (itemApp modelApp){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(MySqliteHelper.COLUMN_APP_TITTLE,modelApp.appTittle);
+        contentValues.put(MySqliteHelper.COLUMN_APP_DEVELOPER,modelApp.appDeveloper);
+        contentValues.put(MySqliteHelper.COLUMN_APP_DETAIL,modelApp.appDetail);
+        contentValues.put(MySqliteHelper.COLUMN_APP_UPDATE,modelApp.appUpdated==true?1:0);
+        db.update(MySqliteHelper.TABLE_NAME_APP,contentValues,MySqliteHelper.COLUMN_ID_APP + " =? ", new String[]{String.valueOf(modelApp.id)});
+    }
+
+    public void deleteAll() {
+        db.delete(MySqliteHelper.TABLE_NAME_APP,null,null);
+    }
+
 
 
     public List<itemApp> getAllItems(){

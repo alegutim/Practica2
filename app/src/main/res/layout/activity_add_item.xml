@@ -23,12 +23,12 @@
     android:layout_height="120dp" />
     <EditText
         android:id="@+id/add_txtname"
-        android:hint="AppName"
+        android:hint="@string/app_item_app"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <EditText
         android:id="@+id/add_txtdeveloper"
-        android:hint="AppDeveloper"
+        android:hint="@string/add_item_developer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <EditText
@@ -38,17 +38,16 @@
         android:maxLines="4"
         android:lines="6"
         android:inputType="textMultiLine"
-        android:hint="AppDetail"
+        android:hint="@string/add_item_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <CheckBox
         android:id="@+id/add_chk_install_update"
-        android:text="Updated"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <Button
         android:id="@+id/add_btn_save"
-        android:text="Save"
+        android:text="@string/add_item_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

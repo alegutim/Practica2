@@ -1,6 +1,7 @@
 package mx.com.alegutim.practica2;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -27,10 +28,12 @@ public class AddItemActivity extends AppCompatActivity {
     private CheckBox add_chk_install_update;
     private final int random_image= 1 + (int)(Math.random() * 5);
     private AppDataSource appDataSource;
+    protected Resources res;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        res = getResources();
         appDataSource = new AppDataSource(getApplicationContext());
         setContentView(R.layout.activity_add_item);
         add_txtname = (EditText) findViewById(R.id.add_txtname);
@@ -58,14 +61,14 @@ public class AddItemActivity extends AppCompatActivity {
         }
 
         Picasso.with(getApplicationContext()).load(img_url).into(add_img);
-
+        add_chk_install_update.setText(res.getString(R.string.additem_checked_notok));
         add_chk_install_update.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(add_chk_install_update.isChecked()){
-                    add_chk_install_update.setText("Installed");
+                    add_chk_install_update.setText(res.getString(R.string.additem_checked_ok));
                 } else{
-                    add_chk_install_update.setText("Updated");
+                    add_chk_install_update.setText(res.getString(R.string.additem_checked_notok));
                 }
             }
         });

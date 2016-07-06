@@ -4,6 +4,7 @@ package mx.com.alegutim.practica2.fragment;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.annotation.Nullable;
@@ -29,11 +30,13 @@ public class FragmentList extends Fragment {
     private AppDataSource appDataSource;
     private ListView  listView;
     private TextView fragment_list_txt;
+    private Resources res;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         appDataSource = new AppDataSource(getActivity());
+        res = getResources();
     }
 
     @Nullable
@@ -45,7 +48,7 @@ public class FragmentList extends Fragment {
         List<itemApp> modelAppList = appDataSource.getAllItems();
         listView.setAdapter(new AdapterAppList(getActivity(), modelAppList));
         if ( modelAppList.size()==0){
-            fragment_list_txt.setText("No Apps installed");
+            fragment_list_txt.setText(res.getString(R.string.fragment_no_app));
         } else {
             fragment_list_txt.setText("");
         }

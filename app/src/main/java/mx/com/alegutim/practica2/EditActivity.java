@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
@@ -41,12 +42,32 @@ public class EditActivity extends AppCompatActivity {
         edit_developer.setText(modelApp.appDeveloper);
         edit_detail.setText(modelApp.appDetail);
         if (modelApp.appUpdated){
-            edit_check.setText("Installed");
+            edit_check.setText(getResources().getString(R.string.additem_checked_ok));
             edit_check.setChecked(true);
         } else{
-            edit_check.setText("Updataed");
+            edit_check.setText(getResources().getString(R.string.additem_checked_notok));
             edit_check.setChecked(false);
         }
+
+        findViewById(R.id.edit_btn_save).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                modelApp.appTittle = edit_tittle.getText().toString();
+                modelApp.appDeveloper = edit_developer.getText().toString();
+                modelApp.appDetail = edit_detail.getText().toString();
+                modelApp.appUpdated = edit_check.isChecked();
+                appDataSource.saveEditApp(modelApp);
+                Intent i = new Intent();
+                i.putExtra("ID",modelApp.id);
+                i.putExtra("TITTLE",modelApp.appTittle);
+                i.putExtra("DEVELOPER",modelApp.appDeveloper);
+                i.putExtra("DETAIL",modelApp.appDetail);
+                i.putExtra("IMAGE",modelApp.image_id);
+                i.putExtra("UPDATE",modelApp.appUpdated);
+                setResult(RESULT_OK,i);
+                finish();
+            }
+        });
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.tbSave);
         setSupportActionBar(toolbar);

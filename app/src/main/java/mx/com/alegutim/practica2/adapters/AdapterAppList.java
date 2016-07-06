@@ -3,6 +3,7 @@ package mx.com.alegutim.practica2.adapters;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,10 +34,13 @@ public class AdapterAppList extends ArrayAdapter<itemApp> {
     private ViewHolder viewHolder;
     private itemApp modelApp;
     private AppDataSource appDataSource;
+    private Resources res;
+
 
     public AdapterAppList(Context context, List<itemApp> objects) {
         super(context, 0, objects);
         appDataSource = new AppDataSource(getContext());
+        res = context.getResources();
     }
 
     @Override
@@ -77,14 +81,14 @@ public class AdapterAppList extends ArrayAdapter<itemApp> {
         Picasso.with(getContext()).load(id_image).into(viewHolder.row_image);
         viewHolder.row_txttitle.setText(modelApp.appTittle);
         viewHolder.row_txtdeveloper.setText(modelApp.appDeveloper);
-        viewHolder.row_txtstatus.setText((modelApp.appUpdated?"Installed":"Update"));
+        viewHolder.row_txtstatus.setText((modelApp.appUpdated?res.getString(R.string.adapter_intalled):res.getString(R.string.adapter_update)));
         viewHolder.row_image_button.setClickable(true);
         viewHolder.row_image_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new AlertDialog.Builder(getContext())
-                        .setTitle("Borrar App")
-                        .setMessage(String.format("¿Desea borrar la App %s?",viewHolder.row_txttitle.getText()))
+                        .setTitle(res.getString(R.string.adapter_alert_dialog))
+                        .setMessage(String.format(res.getString(R.string.adapter_alert_message),viewHolder.row_txttitle.getText()))
                         .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {

@@ -10,16 +10,19 @@ import android.view.View;
 
 
 import mx.com.alegutim.practica2.fragment.FragmentList;
+import mx.com.alegutim.practica2.sql.AppDataSource;
 
 
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_ADD_ACTIVITY =1;
+    private AppDataSource appDataSource;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        appDataSource = new AppDataSource(getApplicationContext());
         Toolbar toolbar = (Toolbar) findViewById(R.id.tbSave);
         setSupportActionBar(toolbar);
 
@@ -44,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
                 ,REQUEST_CODE_ADD_ACTIVITY);
                 return true;
             case R.id.menu_main_delete_all:
+                appDataSource.deleteAll();
+                getFragmentManager().beginTransaction().replace(R.id.fragmentHolder, new FragmentList()).commit();
                 return true;
         }
 

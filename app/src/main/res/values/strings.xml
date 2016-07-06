@@ -1,3 +1,29 @@
 <resources>
     <string name="app_name">Practica2</string>
+    <string name="adapter_intalled">Installed</string>
+    <string name="adapter_update">Update</string>
+    <string name="adapter_alert_dialog">Borrar App</string>
+    <string name="adapter_alert_message">¿Desea borrar la App %s?</string>
+    <string name="fragment_no_app">No Apps installed</string>
+    <string name="serviceNotification_title">Uninstalling</string>
+    <string name="serviceNotification_text">Uninstalling APP</string>
+    <string name="serviceNotification_tittle_final">Uninstall completed</string>
+    <string name="serviceNotification_text_final">The App is full uninstalled</string>
+    <string name="serviceNotification_inf_final">Uninstall</string>
+    <string name="serviceUpdating_tittle">Updating</string>
+    <string name="serviceUpdating_text">Updating APP</string>
+    <string name="serviceUpdating_tittle_final">Update completed</string>
+    <string name="serviceUpdating_text_final">The App is updated</string>
+    <string name="serviceUpdating_info_final">Update</string>
+    <string name="additem_checked_ok">Installed</string>
+    <string name="additem_checked_notok">Updated</string>
+    <string name="add_item_developer">AppDeveloper</string>
+    <string name="app_item_app">AppTittle</string>
+    <string name="add_item_detail">AppDetail</string>
+    <string name="add_item_button">Save</string>
+    <string name="detail_button_open">Open</string>
+    <string name="detail_button_drop">Drop App</string>
+    <string name="edit_button_save">Save</string>
+    <string name="menu_detail_add">Add App</string>
+    <string name="menu_main_delete_all">Delete all Apps</string>
 </resources>

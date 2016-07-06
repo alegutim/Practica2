@@ -26,7 +26,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <TextView
-            android:hint="App Name"
             android:layout_weight="1"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -44,7 +43,6 @@
         <TextView
             android:textStyle="italic"
             android:layout_below="@id/row_txttitle"
-            android:hint="AppDeveloper"
             android:layout_weight="1"
             android:textSize="15sp"
             android:id="@+id/row_txtdeveloper"
@@ -55,7 +53,6 @@
             android:textStyle="bold"
             android:textColor="#006400"
             android:gravity="right"
-            android:hint="AppStatus"
             android:layout_weight="1"
             android:textSize="15sp"
             android:id="@+id/row_txtstatus"

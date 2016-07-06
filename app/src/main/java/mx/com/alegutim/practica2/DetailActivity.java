@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import mx.com.alegutim.practica2.adapters.AdapterAppList;
+import mx.com.alegutim.practica2.fragment.FragmentList;
 import mx.com.alegutim.practica2.model.itemApp;
 import mx.com.alegutim.practica2.service.ServiceNotification;
 import mx.com.alegutim.practica2.service.ServiceUpdating;
@@ -43,50 +44,21 @@ public class DetailActivity extends AppCompatActivity {
         detail_developer_app = (TextView)findViewById(R.id.detail_developer_app);
         detail_detail_app = (TextView)findViewById(R.id.detail_detail_app);
         detail_btn_update = (Button)findViewById(R.id.detail_btn_update);
-        modelApp = new itemApp();
-        modelApp.id = getIntent().getExtras().getInt("ID");
-        modelApp.appTittle = getIntent().getExtras().getString("TITTLE");
-        modelApp.appDeveloper = getIntent().getExtras().getString("DEVELOPER");
-        modelApp.appDetail = getIntent().getExtras().getString("DETAIL");
-        modelApp.image_id = getIntent().getExtras().getInt("IMAGE");
-        modelApp.appUpdated = getIntent().getExtras().getBoolean("UPDATE");
+        LoadInfo(getIntent());
 
-        detail_tittle_app.setText(modelApp.appTittle);
-        detail_developer_app.setText(modelApp.appDeveloper);
-        detail_detail_app.setText(modelApp.appDetail);
-        String id_image = "";
-        switch (modelApp.image_id){
-            case 1:
-                id_image= AdapterAppList.url_1;
-                break;
-            case 2:
-                id_image=AdapterAppList.url_2;
-                break;
-            case 3:
-                id_image=AdapterAppList.url_3;
-                break;
-            case 4:
-                id_image=AdapterAppList.url_4;
-                break;
-            case 5:
-                id_image=AdapterAppList.url_5;
-                break;
-        }
-        Picasso.with(getApplicationContext()).load(id_image).into(detail_img_app);
-        if (modelApp.appUpdated){
-            detail_btn_update.setText("Installed");
-            detail_btn_update.setEnabled(false);
-        } else{
-            detail_btn_update.setText("Update");
-        }
+
         detail_btn_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 iniServiceUpdate();
-                detail_btn_update.setText("Installed");
+                detail_btn_update.setText(getResources().getString(R.string.adapter_intalled));
                 detail_btn_update.setEnabled(false);
                 modelApp.appUpdated=true;
-                appDataSource.saveUtlConexion(modelApp);
+                appDataSource.saveChangeUpdate(modelApp);
+                Intent i = new Intent();
+
+                setResult(RESULT_OK,new Intent());
+                finish();
             }
         });
 
@@ -103,8 +75,8 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 new AlertDialog.Builder(DetailActivity.this)
-                        .setTitle("Borrar App")
-                        .setMessage(String.format("¿Desea borrar la App %s?",modelApp.appTittle))
+                        .setTitle(getResources().getString(R.string.adapter_alert_dialog))
+                        .setMessage(String.format(getResources().getString(R.string.adapter_alert_message),modelApp.appTittle))
                         .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -165,5 +137,53 @@ public class DetailActivity extends AppCompatActivity {
         return true;
     }
 
+    protected void LoadInfo(Intent intent){
+        modelApp = new itemApp();
+        modelApp.id = intent.getExtras().getInt("ID");
+        modelApp.appTittle = intent.getExtras().getString("TITTLE");
+        modelApp.appDeveloper = intent.getExtras().getString("DEVELOPER");
+        modelApp.appDetail = intent.getExtras().getString("DETAIL");
+        modelApp.image_id = intent.getExtras().getInt("IMAGE");
+        modelApp.appUpdated = intent.getExtras().getBoolean("UPDATE");
+
+        detail_tittle_app.setText(modelApp.appTittle);
+        detail_developer_app.setText(modelApp.appDeveloper);
+        detail_detail_app.setText(modelApp.appDetail);
+        String id_image = "";
+        switch (modelApp.image_id){
+            case 1:
+                id_image= AdapterAppList.url_1;
+                break;
+            case 2:
+                id_image=AdapterAppList.url_2;
+                break;
+            case 3:
+                id_image=AdapterAppList.url_3;
+                break;
+            case 4:
+                id_image=AdapterAppList.url_4;
+                break;
+            case 5:
+                id_image=AdapterAppList.url_5;
+                break;
+        }
+        Picasso.with(getApplicationContext()).load(id_image).into(detail_img_app);
+        if (modelApp.appUpdated){
+            detail_btn_update.setText(getResources().getString(R.string.additem_checked_ok));
+            detail_btn_update.setEnabled(false);
+        } else{
+            detail_btn_update.setText(getResources().getString(R.string.additem_checked_notok));
+        }
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (REQUEST_CODE_EDIT_ACTIVITY==requestCode && resultCode==RESULT_OK){
+            LoadInfo(data);
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
 
 }
