@@ -15,16 +15,11 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import mx.com.alegutim.practica2.adapters.AdapterAppList;
 import mx.com.alegutim.practica2.model.itemApp;
 import mx.com.alegutim.practica2.sql.AppDataSource;
 
 public class AddItemActivity extends AppCompatActivity {
-
-    private final String url_1 = "http://parentesis.com/imagesPosts/uber-head.jpg";
-    private final String url_2 = "https://s3.amazonaws.com/urgeio-versus/whatsapp/front/front-1393846082939.flat.jpg";
-    private final String url_3 = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Facebook_icon.svg/2000px-Facebook_icon.svg.png";
-    private final String url_4 = "https://lh3.googleusercontent.com/MOf9Kxxkj7GvyZlTZOnUzuYv0JAweEhlxJX6gslQvbvlhLK5_bSTK6duxY2xfbBsj43H=w300";
-    private final String url_5 = "http://puntodestino.com.mx/wp-content/uploads/2016/05/TuTag.jpg";
 
     private EditText add_txtname;
     private EditText add_txtdeveloper;
@@ -46,19 +41,19 @@ public class AddItemActivity extends AppCompatActivity {
         String img_url = "";
         switch (random_image){
             case 1:
-                img_url=url_1;
+                img_url= AdapterAppList.url_1;
                 break;
             case 2:
-                img_url=url_2;
+                img_url=AdapterAppList.url_2;
                 break;
             case 3:
-                img_url=url_3;
+                img_url=AdapterAppList.url_3;
                 break;
             case 4:
-                img_url=url_4;
+                img_url=AdapterAppList.url_4;
                 break;
             case 5:
-                img_url=url_5;
+                img_url=AdapterAppList.url_5;
                 break;
         }
 

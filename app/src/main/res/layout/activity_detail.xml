@@ -17,23 +17,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <ImageView
+            android:id="@+id/detail_img_app"
             android:layout_weight="1"
             android:src="@drawable/ic_navigation_more_vert"
-            android:layout_width="150dp"
-            android:layout_height="150dp" />
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
             <LinearLayout
                 android:layout_weight="3"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
-                    android:textSize="50sp"
+                    android:id="@+id/detail_tittle_app"
+                    android:textSize="40sp"
                     android:textStyle="bold"
                     android:hint="Titulo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
                 <TextView
-                    android:textSize="30sp"
+                    android:id="@+id/detail_developer_app"
+                    android:textSize="20sp"
                     android:textStyle="italic"
                     android:hint="Developer"
                     android:layout_width="match_parent"
@@ -42,6 +45,7 @@
 
         </LinearLayout>
         <TextView
+            android:id="@+id/detail_detail_app"
             android:textSize="20sp"
             android:hint="Descripcion"
             android:layout_width="match_parent"
@@ -51,17 +55,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <Button
+                android:id="@+id/detail_btn_update"
                 android:layout_weight="1"
                 android:text="Update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <Button
+                android:id="@+id/detail_btn_open"
                 android:layout_weight="1"
                 android:text="Open"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
         <Button
+            android:id="@+id/detail_btn_drop"
             android:text="Drop App"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

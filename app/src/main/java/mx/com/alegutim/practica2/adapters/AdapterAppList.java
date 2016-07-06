@@ -25,11 +25,11 @@ import mx.com.alegutim.practica2.sql.AppDataSource;
  * Created by Administrator on 04/07/2016.
  */
 public class AdapterAppList extends ArrayAdapter<itemApp> {
-    private final String url_1 = "http://parentesis.com/imagesPosts/uber-head.jpg";
-    private final String url_2 = "https://s3.amazonaws.com/urgeio-versus/whatsapp/front/front-1393846082939.flat.jpg";
-    private final String url_3 = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Facebook_icon.svg/2000px-Facebook_icon.svg.png";
-    private final String url_4 = "https://lh3.googleusercontent.com/MOf9Kxxkj7GvyZlTZOnUzuYv0JAweEhlxJX6gslQvbvlhLK5_bSTK6duxY2xfbBsj43H=w300";
-    private final String url_5 = "http://puntodestino.com.mx/wp-content/uploads/2016/05/TuTag.jpg";
+    public static final String url_1 = "http://parentesis.com/imagesPosts/uber-head.jpg";
+    public static final String url_2 = "https://s3.amazonaws.com/urgeio-versus/whatsapp/front/front-1393846082939.flat.jpg";
+    public static final String url_3 = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Facebook_icon.svg/2000px-Facebook_icon.svg.png";
+    public static final String url_4 = "https://lh3.googleusercontent.com/MOf9Kxxkj7GvyZlTZOnUzuYv0JAweEhlxJX6gslQvbvlhLK5_bSTK6duxY2xfbBsj43H=w300";
+    public static final String url_5 = "http://puntodestino.com.mx/wp-content/uploads/2016/05/TuTag.jpg";
     private ViewHolder viewHolder;
     private itemApp modelApp;
     private AppDataSource appDataSource;
@@ -89,8 +89,6 @@ public class AdapterAppList extends ArrayAdapter<itemApp> {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 appDataSource.deleteItem(modelApp);
-
-                                //listView.setAdapter(new AdapterAppList(getActivity(),appDataSource.getAllItems()));
                             }
                         })
                         .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {

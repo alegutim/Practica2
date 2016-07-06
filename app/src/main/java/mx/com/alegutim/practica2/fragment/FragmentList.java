@@ -62,7 +62,14 @@ public class FragmentList extends Fragment {
     }
 
     private void trueAcces(itemApp modelApp) {
-        startActivity(new Intent(getActivity(), DetailActivity.class));
+        Intent i = new Intent(getActivity(),DetailActivity.class);
+        i.putExtra("ID",modelApp.id);
+        i.putExtra("TITTLE",modelApp.appTittle);
+        i.putExtra("DEVELOPER",modelApp.appDeveloper);
+        i.putExtra("DETAIL",modelApp.appDetail);
+        i.putExtra("IMAGE",modelApp.image_id);
+        i.putExtra("UPDATE",modelApp.appUpdated);
+        startActivity(i);
     }
 
 

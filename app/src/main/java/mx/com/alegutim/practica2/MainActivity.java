@@ -15,6 +15,7 @@ import mx.com.alegutim.practica2.fragment.FragmentList;
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_ADD_ACTIVITY =1;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +50,11 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onResume() {
+        getFragmentManager().beginTransaction().replace(R.id.fragmentHolder, new FragmentList()).commit();
+        super.onResume();
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

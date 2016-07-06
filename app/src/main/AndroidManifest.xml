@@ -18,7 +18,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".AddItemActivity" />
-        <activity android:name=".DetailActivity"></activity>
+        <activity android:name=".DetailActivity" />
+
+        <service android:name=".service.ServiceNotification" />
+        <service android:name=".service.ServiceUpdating" />
+
+        <activity android:name=".EditActivity"></activity>
     </application>
 
 </manifest>

@@ -36,6 +36,11 @@ public class AppDataSource {
         db.delete(MySqliteHelper.TABLE_NAME_APP,MySqliteHelper.COLUMN_ID_APP + " =? ", new String[]{String.valueOf(modelApp.id)});
     }
 
+    public  void saveUtlConexion (itemApp modelApp){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(MySqliteHelper.COLUMN_APP_UPDATE,modelApp.appUpdated==true?1:0);
+        db.update(MySqliteHelper.TABLE_NAME_APP,contentValues,MySqliteHelper.COLUMN_ID_APP + " =? ", new String[]{String.valueOf(modelApp.id)});
+    }
 
 
     public List<itemApp> getAllItems(){
